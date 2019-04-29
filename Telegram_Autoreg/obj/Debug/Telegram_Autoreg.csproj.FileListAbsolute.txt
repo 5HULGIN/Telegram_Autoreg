@@ -1,0 +1,12 @@
+F:\Projects\Telegram_Autoreg\Telegram_Autoreg\obj\Debug\Telegram_Autoreg.Form1.resources
+F:\Projects\Telegram_Autoreg\Telegram_Autoreg\obj\Debug\Telegram_Autoreg.Properties.Resources.resources
+F:\Projects\Telegram_Autoreg\Telegram_Autoreg\obj\Debug\Telegram_Autoreg.csproj.GenerateResource.cache
+F:\Projects\Telegram_Autoreg\Telegram_Autoreg\obj\Debug\Telegram_Autoreg.csproj.CoreCompileInputs.cache
+F:\Projects\Telegram_Autoreg\Telegram_Autoreg\bin\Debug\Telegram_Autoreg.exe
+F:\Projects\Telegram_Autoreg\Telegram_Autoreg\bin\Debug\Telegram_Autoreg.pdb
+F:\Projects\Telegram_Autoreg\Telegram_Autoreg\obj\Debug\Telegram_Autoreg.exe
+F:\Projects\Telegram_Autoreg\Telegram_Autoreg\obj\Debug\Telegram_Autoreg.pdb
+F:\Projects\Telegram_Autoreg\Telegram_Autoreg\bin\Debug\Telegram_Autoreg.exe.config
+F:\Projects\Telegram_Autoreg\Telegram_Autoreg\bin\Debug\SimWinMouse.dll
+F:\Projects\Telegram_Autoreg\Telegram_Autoreg\obj\Debug\Telegram_Autoreg.csproj.CopyComplete
+F:\Projects\Telegram_Autoreg\Telegram_Autoreg\obj\Debug\Telegram_Autoreg.csprojAssemblyReference.cache
