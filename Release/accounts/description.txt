@@ -1,0 +1,1 @@
+Before starting the program, make sure that this folder is empty.
