@@ -28,3 +28,9 @@ If you want to build a solution yourself
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+## Screenshots
+![Screenshot](https://i.imgur.com/PUD6jJi.png?raw=true "Optional Title")
+![Screenshot](https://i.imgur.com/v4Su1ht.png?raw=true "Optional Title")
+
+
+
