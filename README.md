@@ -18,11 +18,11 @@ If you want to build a solution yourself
 
 ## Usage
 * Choose txt first names list and second names list by relevant buttons 
+* Choose folder with avatars by "avatars folder" button if you want to add avatars to new accounts
 * Copy api key and put it into "api key" box. e.g. for sms-activate.ru you can find api key in your [profile](https://sms-activate.ru/ru/profile)
 
 ## To-do
 
-* Add the ability to upload and set random avatar for new account from folder with avatars.
 * Add proxy support
 * Add protection from account lock
 * Add the ability to generate random username
