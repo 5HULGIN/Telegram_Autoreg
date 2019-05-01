@@ -22,8 +22,11 @@ If you want to build a solution yourself
 
 ## To-do
 
-* Add avatars upload function to set random avatar for new account
+* Add the ability to upload and set random avatar for new account from folder with avatars.
 * Add proxy support
+* Add protection from account lock
+* Add the ability to generate random username
+* Add other sms-activation services support
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
