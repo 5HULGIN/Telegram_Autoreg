@@ -81,7 +81,7 @@
             this.First_names_upload_button.Name = "First_names_upload_button";
             this.First_names_upload_button.Size = new System.Drawing.Size(126, 23);
             this.First_names_upload_button.TabIndex = 3;
-            this.First_names_upload_button.Text = "First Names Upload";
+            this.First_names_upload_button.Text = "First Names upload";
             this.First_names_upload_button.UseVisualStyleBackColor = true;
             this.First_names_upload_button.Click += new System.EventHandler(this.First_names_upload_button_Click);
             // 
@@ -131,13 +131,13 @@
             // 
             // Avatars_upload_button
             // 
-            this.Avatars_upload_button.Enabled = false;
             this.Avatars_upload_button.Location = new System.Drawing.Point(6, 77);
             this.Avatars_upload_button.Name = "Avatars_upload_button";
             this.Avatars_upload_button.Size = new System.Drawing.Size(126, 23);
             this.Avatars_upload_button.TabIndex = 5;
-            this.Avatars_upload_button.Text = "Avatars upload";
+            this.Avatars_upload_button.Text = "Avatars folder";
             this.Avatars_upload_button.UseVisualStyleBackColor = true;
+            this.Avatars_upload_button.Click += new System.EventHandler(this.Avatars_upload_button_Click);
             // 
             // groupBox2
             // 

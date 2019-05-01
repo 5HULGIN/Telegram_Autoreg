@@ -27,6 +27,7 @@ namespace Telegram_Autoreg
 
         List<string> First_names_list = new List<string>();
         List<string> Second_names_list = new List<string>();
+        List<string> avatars = new List<string>();
 
 
         public Form1()
@@ -40,7 +41,11 @@ namespace Telegram_Autoreg
             OpenFileDialog openFileDialog1 = new OpenFileDialog() { Filter = "Text files(*.txt)|*.txt" };
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 filename = openFileDialog1.FileName;
-            First_names_list = File.ReadAllLines(filename).ToList();
+            try
+            {
+                First_names_list = File.ReadAllLines(filename).ToList();
+            }
+            catch (Exception) { }
 
             try
             {
@@ -69,13 +74,44 @@ namespace Telegram_Autoreg
 
         }
 
+        public void LeftClick(int x, int y, int delay)
+        {
+            SimMouse.Click(MouseButtons.Left, x, y);
+            System.Threading.Thread.Sleep(delay);
+        }
+
+        public void SetAvatar()
+        {
+            var random = new Random();
+
+            LeftClick(25, 50, 1000);
+            LeftClick(100, 360, 1000);
+            LeftClick(160, 185, 1000);
+            IntPtr hWindow = FindWindow(null, "Выберите изображение");
+            MoveWindow(hWindow, 0, 0, 600, 600, true);
+            LeftClick(160, 185, 500);
+            LeftClick(247, 536, 300);
+            SendKeys.SendWait("{BS}");
+            System.Threading.Thread.Sleep(1000);
+            int random_index = random.Next((avatars.Count) - 1);
+            SendKeys.SendWait(avatars[random_index]);
+            System.Threading.Thread.Sleep(500);
+            LeftClick(450, 570, 500);
+            System.Threading.Thread.Sleep(1000);
+            LeftClick(415, 496, 0);
+        }
+
         private void Second_names_upload_button_Click(object sender, EventArgs e)
         {
             string filename = "";
             OpenFileDialog openFileDialog1 = new OpenFileDialog() { Filter = "Text files(*.txt)|*.txt" };
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 filename = openFileDialog1.FileName;
-            Second_names_list = File.ReadAllLines(filename).ToList();
+            try
+            {
+                Second_names_list = File.ReadAllLines(filename).ToList();
+            }
+            catch (Exception) { }
 
             try
             {
@@ -104,7 +140,11 @@ namespace Telegram_Autoreg
         internal static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
 
 
+        public void Sleep(int delay)
+        {
+            System.Threading.Thread.Sleep(delay);
 
+        }
 
         public void sms_activate_RegisterAccount(string NotNumberAtAll, string name, string surname, string key, string id)
         {
@@ -119,33 +159,30 @@ namespace Telegram_Autoreg
             IntPtr hWindow = FindWindow(null, "Telegram");
             MoveWindow(hWindow, 0, 0, 600, 600, true);
 
-            System.Threading.Thread.Sleep(2000);
+            Sleep(2000);
             MoveWindow(hWindow, 0, 0, 600, 600, true);
-            System.Threading.Thread.Sleep(1000);
-            SimMouse.Click(MouseButtons.Left, 300, 425);
-
-            System.Threading.Thread.Sleep(1000);
-            SimMouse.Click(MouseButtons.Left, 200, 310);
-            System.Threading.Thread.Sleep(1000);
+            Sleep(1000);
+            LeftClick(300, 425, 1000);
+            LeftClick(200, 310, 1000);
             SendKeys.SendWait("{BS}");
             SendKeys.SendWait("{BS}");
             SendKeys.SendWait("{BS}");
-            System.Threading.Thread.Sleep(1000);
+            Sleep(1000);
             SendKeys.SendWait("{+}");
-            System.Threading.Thread.Sleep(500);
+            Sleep(500);
             SendKeys.SendWait("7");
             Time_log("Number is ready");
-            System.Threading.Thread.Sleep(1000);
-            SimMouse.Click(MouseButtons.Left, 300, 310);
+            Sleep(1000);
+            LeftClick(300, 310, 100);
             for(int i= 0;i <= 9;i++)
             {
 
                 SendKeys.SendWait(NF[i].ToString());
-                System.Threading.Thread.Sleep(500);
+                Sleep(500);
 
             }
-            System.Threading.Thread.Sleep(2000);
-            SimMouse.Click(MouseButtons.Left, 300, 410);
+            Sleep(1000);
+            LeftClick(300, 410, 0);
 
             using (var client1 = new WebClient())
             {
@@ -160,8 +197,7 @@ namespace Telegram_Autoreg
                     string url1 = @"http://sms-activate.ru/stubs/handler_api.php?api_key=" + key + @"&action=getStatus&id=" + id;
                     var responseString1 = client1.DownloadString(url1); 
                     if(responseString1.Contains("STATUS_OK")) { j = 1; }
-                    System.Threading.Thread.Sleep(3000);
-
+                    Sleep(2000);
                 }
 
                 if (responseString == "ACCESS_READY")
@@ -171,33 +207,34 @@ namespace Telegram_Autoreg
                     var responseString1 = client1.DownloadString(url1);
                     var code = responseString1.Substring(10, 5);
                     SendKeys.SendWait(code);
-                    System.Threading.Thread.Sleep(2000);
-                    System.Threading.Thread.Sleep(2000);
-                    SimMouse.Click(MouseButtons.Left, 280, 250);
-                    System.Threading.Thread.Sleep(2500);
+                    Sleep(2000);
+                    LeftClick(280, 250, 2500);
                     SendKeys.SendWait(name);
-                    System.Threading.Thread.Sleep(2700);
-                    SimMouse.Click(MouseButtons.Left, 280, 310);
-                    System.Threading.Thread.Sleep(2500);
+                    Sleep(750);
+                    LeftClick(280, 310, 1500);
                     SendKeys.SendWait(surname);
-                    System.Threading.Thread.Sleep(2000);
-                    SimMouse.Click(MouseButtons.Left, 300, 400);
+                    Sleep(1000);
+                    LeftClick(300, 400, 0);
                     NotNumberAtAll = "+7" + NotNumberAtAll;
                     Accounts_table.Rows.Add(NotNumberAtAll, name, surname);
                     int n = 1;
                     Time_log(("Account № " + n.ToString() + " registered"));
                     ++n;
-                    SimMouse.Click(MouseButtons.Left, 300, 410);
-                    SimMouse.Click(MouseButtons.Left, 300, 400);
-                    System.Threading.Thread.Sleep(4000);
+                    LeftClick(300, 410, 0);
+                    LeftClick(300, 400, 1000);
 
-
+                    if (avatars.Count != 0)
+                    {
+                        Sleep(2000);
+                        SetAvatar();
+                    }
+                    System.Threading.Thread.Sleep(2000);
 
                     try
                     {
                         Process[] telegram = Process.GetProcessesByName("Telegram");
                         telegram[0].Kill();
-                        System.Threading.Thread.Sleep(2500);
+                        Sleep(2500);
                     }
                     catch { }
                     MoveTelegram();
@@ -216,9 +253,9 @@ namespace Telegram_Autoreg
         public void MoveTelegram()
         {
             Directory.CreateDirectory(Directory.GetCurrentDirectory() + @"\accounts\" + (n - 1).ToString());
-            System.Threading.Thread.Sleep(1500);
+            Sleep(1500);
             new DirectoryInfo((Directory.GetCurrentDirectory() + @"\telegram\tdata")).MoveTo(Directory.GetCurrentDirectory() + @"\accounts\" + (n - 1).ToString() + @"\tdata");
-            System.Threading.Thread.Sleep(1500);
+            Sleep(1000);
             new DirectoryInfo((Directory.GetCurrentDirectory() + @"\telegram\log.txt")).MoveTo(Directory.GetCurrentDirectory() + @"\accounts\" + (n - 1).ToString() + @"\log.txt");
             n++;
             Time_log("Account moved successfully");
@@ -245,7 +282,6 @@ namespace Telegram_Autoreg
                         {
                             string number = responseString.Substring(25, 10);
                             string id = responseString.Substring(14, 9);
-                            Time_log(id);
                             int name_index = random.Next((First_names_list.Count) - 1);
                             int surname_index = random.Next((Second_names_list.Count) - 1);
                             sms_activate_RegisterAccount(number, First_names_list[name_index], Second_names_list[surname_index], key, id);
@@ -293,6 +329,25 @@ namespace Telegram_Autoreg
             n = n / 2;
             MessageBox.Show(n.ToString() + " Accounts registered");
 
+        }
+
+        private void Avatars_upload_button_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+
+                    string[] avatars1 = Directory.GetFiles(fbd.SelectedPath);
+                    foreach (string av in avatars1)
+                    {
+                        avatars.Add(av);
+                        Time_log("Add avatar " + av);
+                    }
+                }
+            }
         }
     }
 }
